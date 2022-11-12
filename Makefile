@@ -31,6 +31,7 @@ endif
 
 OBJECTS = $(patsubst src/%.c, build/%.o, $(wildcard src/*.c))
 OBJECTS += $(patsubst src/%.cpp, build/%.o, $(wildcard src/*.cpp))
+OBJECTS += $(patsubst src/Math/%.cpp, build/Math/%.o, $(wildcard src/Math/*.cpp))
 DEPS = $(OBJECTS:.o=.d)
 
 ifeq '$(findstring ;,$(PATH))' ';'
