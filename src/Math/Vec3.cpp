@@ -13,6 +13,16 @@ Vec3::Vec3(float x, float y, float z)
     this->y = y;
     this->z = z;
 }
+
+float Vec3::length()
+{
+    return sqrt(x * x + y * y);
+}
+Vec3 Vec3::normalized()
+{
+    return *this / length();
+}
+
 Vec3 operator + (Vec3 a, Vec3 b)
 {
     return Vec3(a.x + b.x, a.y + b.y, a.z + b.z);

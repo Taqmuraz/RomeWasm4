@@ -14,6 +14,16 @@ Vec4::Vec4(float x, float y, float z, float w)
     this->z = z;
     this->w = w;
 }
+
+float Vec4::length()
+{
+    return sqrt(x * x + y * y);
+}
+Vec4 Vec4::normalized()
+{
+    return *this / length();
+}
+
 Vec4 operator + (Vec4 a, Vec4 b)
 {
     return Vec4(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);

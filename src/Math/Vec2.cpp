@@ -12,6 +12,15 @@ Vec2::Vec2(float x, float y)
     this->y = y;
 }
 
+float Vec2::length()
+{
+    return sqrt(x * x + y * y);
+}
+Vec2 Vec2::normalized()
+{
+    return *this / length();
+}
+
 Vec2 operator + (Vec2 a, Vec2 b)
 {
     return Vec2(a.x + b.x, a.y + b.y);
