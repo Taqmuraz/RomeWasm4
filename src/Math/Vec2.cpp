@@ -1,4 +1,5 @@
 #include "Vec2.h"
+#include "Math.h"
 
 Vec2::Vec2()
 {
@@ -25,7 +26,7 @@ Vec2 operator * (Vec2 a, Vec2 b)
 }
 Vec2 operator / (Vec2 a, Vec2 b)
 {
-    return Vec2(b.x == 0 ? 0 : (a.x / b.x), b.y == 0 ? 0 : (a.y / b.y));
+    return Vec2(safeDiv(a.x, b.x), safeDiv(a.y, b.y));
 }
 Vec2 operator * (Vec2 a, float b)
 {
@@ -33,7 +34,7 @@ Vec2 operator * (Vec2 a, float b)
 }
 Vec2 operator / (Vec2 a, float b)
 {
-    return b == 0 ? Vec2() : Vec2(a.x / b, a.y / b);
+    return safeDivExplicit(b, Vec2(), Vec2(a.x / b, a.y / b));
 }
 float dot(Vec2 a, Vec2 b)
 {
