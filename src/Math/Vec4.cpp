@@ -1,4 +1,6 @@
 #include "Vec4.h"
+#include "Vec3.h"
+#include "Vec2.h"
 #include "Math.h"
 
 Vec4::Vec4()
@@ -15,11 +17,20 @@ Vec4::Vec4(float x, float y, float z, float w)
     this->w = w;
 }
 
-float Vec4::length()
+Vec3 Vec4::xyz() const
+{
+    return Vec3(x, y, z);
+}
+Vec2 Vec4::xy() const
+{
+    return Vec2(x, y);
+}
+
+float Vec4::length() const
 {
     return sqrt(x * x + y * y);
 }
-Vec4 Vec4::normalized()
+Vec4 Vec4::normalized() const
 {
     return *this / length();
 }

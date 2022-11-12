@@ -1,3 +1,7 @@
+#pragma once
+#include "Vec3.h"
+#include "Vec2.h"
+
 struct Vec4
 {
     float x;
@@ -7,8 +11,10 @@ struct Vec4
     Vec4();
     Vec4(float x, float y, float z, float w);
 
-    float length();
-    Vec4 normalized();
+    float length() const;
+    Vec4 normalized() const;
+    Vec2 xy() const;
+    Vec3 xyz() const;
 };
 
 Vec4 operator + (Vec4 a, Vec4 b);

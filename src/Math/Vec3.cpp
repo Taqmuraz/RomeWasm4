@@ -14,13 +14,18 @@ Vec3::Vec3(float x, float y, float z)
     this->z = z;
 }
 
-float Vec3::length()
+float Vec3::length() const
 {
     return sqrt(x * x + y * y);
 }
-Vec3 Vec3::normalized()
+Vec3 Vec3::normalized() const
 {
     return *this / length();
+}
+
+Vec2 Vec3::xy() const
+{
+    return Vec2(x, y);
 }
 
 Vec3 operator + (Vec3 a, Vec3 b)

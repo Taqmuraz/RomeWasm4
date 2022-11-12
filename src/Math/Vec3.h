@@ -1,3 +1,6 @@
+#pragma once
+#include "Vec2.h"
+
 struct Vec3
 {
     float x;
@@ -5,8 +8,9 @@ struct Vec3
     float z;
     Vec3();
     Vec3(float x, float y, float z);
-    float length();
-    Vec3 normalized();
+    float length() const;
+    Vec3 normalized() const;
+    Vec2 xy() const;
 };
 
 Vec3 operator + (Vec3 a, Vec3 b);

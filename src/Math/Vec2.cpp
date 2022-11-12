@@ -12,11 +12,11 @@ Vec2::Vec2(float x, float y)
     this->y = y;
 }
 
-float Vec2::length()
+float Vec2::length() const
 {
     return sqrt(x * x + y * y);
 }
-Vec2 Vec2::normalized()
+Vec2 Vec2::normalized() const
 {
     return *this / length();
 }

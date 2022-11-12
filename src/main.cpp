@@ -1,5 +1,6 @@
 #include "wasm4.h"
 #include <stdio.h>
+#include "Math/Mat4.h"
 
 #define screenWidth 160
 #define screenHeight 160 
@@ -13,11 +14,12 @@ const byte literal[] = {
     0b00010001,
     0b00000101,
     0b00010001,
-    0b01000001,
+    0b10000001,
 };
 byte* frame = (byte*)0xa0;
 
 void update () 
 {
-    for (int i = 0; i < 8; i++) frame[15 + (i + 15) * (screenWidth >> 2)] = literal[i];
+    Vec2 pos = Vec2(15, 15);
+    for (int i = 0; i < 8; i++) frame[(int)pos.x + (i + (int)pos.y) * (screenWidth >> 2)] = literal[i];
 }
