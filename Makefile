@@ -29,10 +29,13 @@ else
 	LDFLAGS += -Wl,--strip-all,--gc-sections,--lto-O3 -Oz
 endif
 
+rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
+
 OBJECTS = $(patsubst src/%.c, build/%.o, $(wildcard src/*.c))
-OBJECTS += $(patsubst src/%.cpp, build/%.o, $(wildcard src/*.cpp))
-OBJECTS += $(patsubst src/Math/%.cpp, build/Math/%.o, $(wildcard src/Math/*.cpp))
+OBJECTS += $(patsubst src/%.cpp, build/%.o, $(call rwildcard,src,*.cpp))
 DEPS = $(OBJECTS:.o=.d)
+
+DIRS = $(foreach v, $(OBJECTS), $(patsubst %.o, %, $v))
 
 ifeq '$(findstring ;,$(PATH))' ';'
     DETECTED_OS := Windows
@@ -43,8 +46,9 @@ else
     DETECTED_OS := $(patsubst MINGW%,MSYS,$(DETECTED_OS))
 endif
 
+
 ifeq ($(DETECTED_OS), Windows)
-	MKDIR_BUILD = if not exist build md build
+	MKDIR_BUILD = Foldermaker $(DIRS)
 	RMDIR = rd /s /q
 else
 	MKDIR_BUILD = mkdir -p build
@@ -64,14 +68,9 @@ else
 endif
 endif
 
-# Compile C sources
-build/%.o: src/%.c
-	@$(MKDIR_BUILD)
-	$(CC) -c $< -o $@ $(CFLAGS)
-
 # Compile C++ sources
 build/%.o: src/%.cpp
-	@$(MKDIR_BUILD)
+	$(MKDIR_BUILD)
 	$(CXX) -c $< -o $@ $(CFLAGS)
 
 .PHONY: clean
