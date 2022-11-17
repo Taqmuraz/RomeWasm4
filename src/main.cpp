@@ -6,7 +6,6 @@
 
 #define screenWidth 160
 #define screenHeight 160 
-#define byte uint8_t
 
 StaticPointer<Array<byte>> literal = staticNew(Array<byte>{
     0b01010101,

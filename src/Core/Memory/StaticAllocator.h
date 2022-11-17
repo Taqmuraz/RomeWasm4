@@ -5,7 +5,7 @@
 class StaticAllocator : public Allocator
 {
     public:
-    template <typename T> StaticPointer<T> allocate(T &&value);
+    template <typename T> StaticPointer<T> allocate(T value);
     protected:
     void* memoryStart() override;
     uint memorySize() override;

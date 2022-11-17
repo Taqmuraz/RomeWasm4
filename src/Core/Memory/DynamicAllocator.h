@@ -6,7 +6,7 @@ class DynamicAllocator : public Allocator
 {
     public:
     void clear();
-    template <typename T> DynamicPointer<T> allocate(T &&value);
+    template <typename T> DynamicPointer<T> allocate(T value);
     protected:
     void* memoryStart() override;
     uint memorySize() override;

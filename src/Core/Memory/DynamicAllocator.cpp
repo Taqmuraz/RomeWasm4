@@ -1,6 +1,6 @@
 #include "DynamicAllocator.h"
 
-template <typename T> DynamicPointer<T> DynamicAllocator::allocate(T &&value)
+template <typename T> DynamicPointer<T> DynamicAllocator::allocate(T value)
 {
     T* ptr = (T*)allocateNative(sizeof(T));
     *ptr = value;

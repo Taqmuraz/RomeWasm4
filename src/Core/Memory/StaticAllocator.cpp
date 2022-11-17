@@ -1,6 +1,6 @@
 #include "StaticAllocator.h"
 
-template <typename T> StaticPointer<T> StaticAllocator::allocate(T &&value)
+template <typename T> StaticPointer<T> StaticAllocator::allocate(T value)
 {
     T* ptr = (T*)allocateNative(sizeof(T));
     *ptr = value;
