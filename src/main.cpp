@@ -7,7 +7,7 @@
 #define screenWidth 160
 #define screenHeight 160 
 
-StaticPointer<Array<byte>> literal = staticNew(Array<byte>{
+StaticPointer<Array<byte, 8>> literal = staticNew(Array<byte, 8>{
     0b01010101,
     0b01000001,
     0b01000001,

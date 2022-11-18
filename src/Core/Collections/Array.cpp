@@ -1,14 +1,15 @@
 #include "Array.h"
 
-template <typename T> T& Array<T>::operator[](uint index)
+template <typename T, uint Size> T& Array<T, Size>::operator[](uint index)
 {
-    return initializer[index];
+     return buffer[index];
 }
-template <typename T> uint Array<T>::length() const
+template <typename T, uint Size> uint Array<T, Size>::length() const
 {
-    return initializer.size();
+    return Size;
 }
-template <typename T> Array<T>::Array(std::initializer_list<T> initializer)
+template <typename T, uint Size> Array<T, Size>::Array(std::initializer_list<T> initializer)
 {
-    this->initializer = initializer;
+        const T* begin = initializer.begin();
+        for (uint i = 0; i < Size; i++) buffer[i] = begin[i];
 }

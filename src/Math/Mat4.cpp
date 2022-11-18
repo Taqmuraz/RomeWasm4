@@ -61,3 +61,21 @@ Mat4 Mat4::createTranslation(Vec3 position)
 {
     return Mat4(Identity.col0, Identity.col1, Identity.col2, Vec4(position.x, position.y, position.z, 1));
 }
+Mat4 operator * (const Mat4& a, const Mat4& b)
+{
+    return Mat4(
+        a * b.col0,
+        a * b.col1,
+        a * b.col2,
+        a * b.col3
+    );
+}
+Vec4 operator * (const Mat4& m, Vec4 v)
+{
+    return Vec4(
+        dot(v, m.line(0)),
+        dot(v, m.line(1)),
+        dot(v, m.line(2)),
+        dot(v, m.line(3))
+    );
+}
