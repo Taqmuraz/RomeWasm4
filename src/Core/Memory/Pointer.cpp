@@ -10,5 +10,5 @@ template<typename T> Pointer<T>::Pointer(T* nativePtr)
 }
 template<typename T> T Pointer<T>::operator *() const
 {
-    return nativePtr;
+    return *nativePtr;
 }
