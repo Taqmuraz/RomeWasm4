@@ -6,7 +6,7 @@
 #define PI 3.141592f
 
 #define sqrt(x) (std::sqrt(x))
-#define deg2rad (180f / PI)
+#define deg2rad (180.0f / PI)
 #define sin(x) std::sin(x * deg2rad)
 #define cos(x) std::cos(x * deg2rad)
 #define tan(x) std::tan(x * deg2rad)
