@@ -5,9 +5,23 @@
 class DynamicAllocator : public Allocator
 {
     public:
-    void clear();
-    template <typename T> DynamicPointer<T> allocate(T value);
+    template <typename T> DynamicPointer<T> allocate(T value)
+    {
+        T* ptr = (T*)allocateNative(sizeof(T));
+        *ptr = value;
+        return ptr;
+    }
+    void clear()
+    {
+        reset();
+    }
     protected:
-    void* memoryStart() override;
-    uint memorySize() override;
+    void* memoryStart() override
+    {
+        return (void*)(0x19a0 + 29488);
+    }
+    uint memorySize() override
+    {
+        return 29488;
+    }
 };

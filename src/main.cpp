@@ -14,8 +14,8 @@ StaticPointer<Array<byte, 8>> literal = staticNew(Array<byte, 8>{
     0b01000001,
     0b00010001,
     0b00000101,
-    0b00110001,
-    0b10000001,
+    0b00110010,
+    0b10000011,
 });
 byte* frame = (byte*)0xa0;
 

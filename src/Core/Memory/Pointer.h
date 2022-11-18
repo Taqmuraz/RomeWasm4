@@ -4,8 +4,17 @@ template <typename T> class Pointer
 {
     T* nativePtr;
     protected:
-    Pointer(T* nativePtr);
+    Pointer(T* nativePtr)
+    {
+        this->nativePtr = nativePtr;
+    }
     public:
-    T* operator -> ();
-    T operator *() const;
+    T* operator -> ()
+    {
+        return nativePtr;
+    }
+    T operator *() const
+    {
+        return *nativePtr;
+    }
 };

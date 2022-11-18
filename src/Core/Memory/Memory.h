@@ -2,6 +2,18 @@
 #include "StaticAllocator.h"
 #include "DynamicAllocator.h"
 
-template<typename T> StaticPointer<T> staticNew(T value);
-template<typename T> DynamicPointer<T> dynamicNew(T value);
-void clearHeap();
+StaticAllocator staticHeap = StaticAllocator();
+DynamicAllocator dynamicHeap = DynamicAllocator();
+
+template<typename T> StaticPointer<T> staticNew(T value)
+{
+    return staticHeap.allocate<T>(value);
+}
+template<typename T> DynamicPointer<T> dynamicNew(T value)
+{
+    return dynamicHeap.allocate<T>(value);
+}
+void clearHeap()
+{
+    dynamicHeap.clear();
+}
