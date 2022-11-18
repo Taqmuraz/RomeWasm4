@@ -7,5 +7,5 @@ template <typename T> class Pointer
     Pointer(T* nativePtr);
     public:
     T* operator -> ();
-    T& operator *() const;
+    T operator *() const;
 };
