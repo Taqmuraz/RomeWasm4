@@ -8,7 +8,7 @@ class DynamicAllocator : public Allocator
     template <typename T> DynamicPointer<T> allocate(T value)
     {
         T* ptr = (T*)allocateNative(sizeof(T));
-        *ptr = value;
+        cloneValue((byte*)&value, (byte*)ptr, sizeof(T));
         return ptr;
     }
     void clear()

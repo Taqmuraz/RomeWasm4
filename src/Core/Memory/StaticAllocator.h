@@ -8,7 +8,7 @@ class StaticAllocator : public Allocator
     template <typename T> StaticPointer<T> allocate(T value)
     {
         T* ptr = (T*)allocateNative(sizeof(T));
-        *ptr = value;
+        cloneValue((byte*)&value, (byte*)ptr, sizeof(T));
         return StaticPointer<T>(ptr);
     }
     protected:
