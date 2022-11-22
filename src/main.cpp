@@ -9,7 +9,7 @@
 #define screenWidth 160
 #define screenHeight 160 
 
-StaticPointer<Array<byte, 8>> literalR = staticNew(Array<byte, 8>{
+Pointer<List<byte>> literalR = staticNew(Array<byte, 8>{
     0b01010101,
     0b01000001,
     0b01000001,
@@ -19,7 +19,7 @@ StaticPointer<Array<byte, 8>> literalR = staticNew(Array<byte, 8>{
     0b00110010,
     0b10000011,
 });
-StaticPointer<Array<byte, 8>> literalL = staticNew(Array<byte, 8>{
+Pointer<List<byte>> literalL = staticNew(Array<byte, 8>{
     0b00000001,
     0b00000001,
     0b00000001,
@@ -31,9 +31,9 @@ StaticPointer<Array<byte, 8>> literalL = staticNew(Array<byte, 8>{
 });
 byte* frame = (byte*)0xa0;
 
-void drawLiteral(Vec2 pos, StaticPointer<Array<byte, 8>> literal)
+void drawLiteral(Vec2 pos, Pointer<List<byte>> literal)
 {
-    for (uint i = 0; i < 8; i++)
+    for (uint i = 0; i < literal->length(); i++)
     {
         int p = (int)pos.x + ((int)i + (int)pos.y) * screenWidth;
         int shift = (p & 3) << 1;

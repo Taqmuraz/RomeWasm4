@@ -1,15 +1,15 @@
 #pragma once
 #include "Allocator.h"
-#include "DynamicPointer.h"
+#include "Pointer.h"
 
 class DynamicAllocator : public Allocator
 {
     public:
-    template <typename T> DynamicPointer<T> allocate(T value)
+    template <typename T> Pointer<T> allocate(T value)
     {
         T* ptr = (T*)allocateNative(sizeof(T));
         cloneValue((byte*)&value, (byte*)ptr, sizeof(T));
-        return ptr;
+        return Pointer<T>(ptr);
     }
     void clear()
     {
